@@ -11,8 +11,9 @@ const SignUpPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let userData = { name, email, password };
     try {
-      const res = await registerUser({ name, email, password });
+      const res = await registerUser(userData);
       setMessage(res.message || "Registered successfully!");
     } catch (err) {
       setMessage(err.message || "Registration failed!");
