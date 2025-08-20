@@ -9,6 +9,14 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://your-frontend-domain.com"], // allow frontend URLs
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 connectToDatabase();
 
 app.use("/api/auth", authRoutes);
